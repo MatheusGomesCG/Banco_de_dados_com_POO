@@ -1,0 +1,769 @@
+use Empresa
+switched to db Empresa
+bd.createCollection("Pessoa")
+ReferenceError: bd is not defined
+show collections
+db.createCollection("Pessoa")
+{ ok: 1 }
+show collections
+Pessoa
+db.Pessoa.insertMany(
+	[
+		{"_id": 1, "nome": "João", "idade": 20, "cargo": "Estagiario" },
+		{"_id": 2, "nome": "Miguel", "idade": 29, "cargo": "Estoquista" },
+		{"_id": 3, "nome": "Maria", "idade": 31, "cargo": "Gerente" },
+		{"_id": 4, "nome": "Cleiton", "idade": 40, "cargo": "Mecanico" },
+		{"_id": 5, "nome": "Jarbas", "idade": 59, "cargo": "Eletricista" },
+		{"_id": 6, "nome": "Catarina", "idade": 25, "cargo": "Supervisora" },
+		{"_id": 7, "nome": "José", "idade": 36, "cargo": "Lider" },
+		{"_id": 8, "nome": "Alice", "idade": 21, "cargo": "Analista" },
+		{"_id": 9, "nome": "Fabio", "idade": 27, "cargo": "Empilhador" },
+		{"_id": 10, "nome": "Josias", "idade": 37, "cargo": "Faxineiro" },		
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5,
+    '5': 6,
+    '6': 7,
+    '7': 8,
+    '8': 9,
+    '9': 10
+  }
+}
+
+db.Pessoa.find()
+{
+  _id: 1,
+  nome: 'João',
+  idade: 20,
+  cargo: 'Estagiario'
+}
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  _id: 8,
+  nome: 'Alice',
+  idade: 21,
+  cargo: 'Analista'
+}
+{
+  _id: 9,
+  nome: 'Fabio',
+  idade: 27,
+  cargo: 'Empilhador'
+}
+{
+  _id: 10,
+  nome: 'Josias',
+  idade: 37,
+  cargo: 'Faxineiro'
+}
+db.Pessoas.find().pretty()
+db.Pessoa.find().pretty()
+{
+  _id: 1,
+  nome: 'João',
+  idade: 20,
+  cargo: 'Estagiario'
+}
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  _id: 8,
+  nome: 'Alice',
+  idade: 21,
+  cargo: 'Analista'
+}
+{
+  _id: 9,
+  nome: 'Fabio',
+  idade: 27,
+  cargo: 'Empilhador'
+}
+{
+  _id: 10,
+  nome: 'Josias',
+  idade: 37,
+  cargo: 'Faxineiro'
+}
+db.Pessoa.updateOne({nome:"Jodias"}, {$set: {nome: "Josias Neto"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.Pessoa.find()
+{
+  _id: 1,
+  nome: 'João',
+  idade: 20,
+  cargo: 'Estagiario'
+}
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  _id: 8,
+  nome: 'Alice',
+  idade: 21,
+  cargo: 'Analista'
+}
+{
+  _id: 9,
+  nome: 'Fabio',
+  idade: 27,
+  cargo: 'Empilhador'
+}
+{
+  _id: 10,
+  nome: 'Josias',
+  idade: 37,
+  cargo: 'Faxineiro'
+}
+db.Pessoa.updateOne({nome:"Josias"}, {$set: {nome: "Josias Neto"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.find()
+{
+  _id: 1,
+  nome: 'João',
+  idade: 20,
+  cargo: 'Estagiario'
+}
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  _id: 8,
+  nome: 'Alice',
+  idade: 21,
+  cargo: 'Analista'
+}
+{
+  _id: 9,
+  nome: 'Fabio',
+  idade: 27,
+  cargo: 'Empilhador'
+}
+{
+  _id: 10,
+  nome: 'Josias Neto',
+  idade: 37,
+  cargo: 'Faxineiro'
+}
+db.Pessoa.updateOne({nome:"Josias Neto"}, {$set: {endereco:"Rua Treze"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.find()
+{
+  _id: 1,
+  nome: 'João',
+  idade: 20,
+  cargo: 'Estagiario'
+}
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  _id: 8,
+  nome: 'Alice',
+  idade: 21,
+  cargo: 'Analista'
+}
+{
+  _id: 9,
+  nome: 'Fabio',
+  idade: 27,
+  cargo: 'Empilhador'
+}
+{
+  _id: 10,
+  nome: 'Josias Neto',
+  idade: 37,
+  cargo: 'Faxineiro',
+  endereco: 'Rua Treze'
+}
+db.Pessoa.updateOne({nome:"Fabio"}, {$set: {nome: "Fabio Jr."}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Fabio Jr."}, {$set: {endereco:"Rua 11 de Outubro"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.find()
+{
+  _id: 1,
+  nome: 'João',
+  idade: 20,
+  cargo: 'Estagiario'
+}
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  _id: 8,
+  nome: 'Alice',
+  idade: 21,
+  cargo: 'Analista'
+}
+{
+  _id: 9,
+  nome: 'Fabio Jr.',
+  idade: 27,
+  cargo: 'Empilhador',
+  endereco: 'Rua 11 de Outubro'
+}
+{
+  _id: 10,
+  nome: 'Josias Neto',
+  idade: 37,
+  cargo: 'Faxineiro',
+  endereco: 'Rua Treze'
+}
+db.Pessoa.find({idade:{$gte:25}})
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  _id: 9,
+  nome: 'Fabio Jr.',
+  idade: 27,
+  cargo: 'Empilhador',
+  endereco: 'Rua 11 de Outubro'
+}
+{
+  _id: 10,
+  nome: 'Josias Neto',
+  idade: 37,
+  cargo: 'Faxineiro',
+  endereco: 'Rua Treze'
+}
+db.Pessoa.find({idade:25}, {id:0})
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+db.Pessoa.find({idade:25}, {_id:0})
+{
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+db.Pessoa.find({idade:{$gte:25}}, {_id:0})
+{
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista'
+}
+{
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente'
+}
+{
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico'
+}
+{
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista'
+}
+{
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora'
+}
+{
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider'
+}
+{
+  nome: 'Fabio Jr.',
+  idade: 27,
+  cargo: 'Empilhador',
+  endereco: 'Rua 11 de Outubro'
+}
+{
+  nome: 'Josias Neto',
+  idade: 37,
+  cargo: 'Faxineiro',
+  endereco: 'Rua Treze'
+}
+db.Pessoa.updateOne({nome:"Fabio Jr."}, {$set: {cidade:"Campina Grande"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Josias Neto."}, {$set: {cidade:"Campina Grande"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Josias Neto"}, {$set: {cidade:"Campina Grande"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Alice"}, {$set: {cidade:"Campina Grande"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Catarina"}, {$set: {cidade:"João Pessoa"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"José"}, {$set: {cidade:"João Pessoa"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Maria"}, {$set: {cidade:"Campina Grande"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Miguel"}, {$set: {cidade:"Patos"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"João"}, {$set: {cidade:"Patos"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Jarbas"}, {$set: {cidade:"João Pessoa"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.updateOne({nome:"Cleiton"}, {$set: {cidade:"Campina Grande"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.Pessoa.find()
+{
+  _id: 1,
+  nome: 'João',
+  idade: 20,
+  cargo: 'Estagiario',
+  cidade: 'Patos'
+}
+{
+  _id: 2,
+  nome: 'Miguel',
+  idade: 29,
+  cargo: 'Estoquista',
+  cidade: 'Patos'
+}
+{
+  _id: 3,
+  nome: 'Maria',
+  idade: 31,
+  cargo: 'Gerente',
+  cidade: 'Campina Grande'
+}
+{
+  _id: 4,
+  nome: 'Cleiton',
+  idade: 40,
+  cargo: 'Mecanico',
+  cidade: 'Campina Grande'
+}
+{
+  _id: 5,
+  nome: 'Jarbas',
+  idade: 59,
+  cargo: 'Eletricista',
+  cidade: 'João Pessoa'
+}
+{
+  _id: 6,
+  nome: 'Catarina',
+  idade: 25,
+  cargo: 'Supervisora',
+  cidade: 'João Pessoa'
+}
+{
+  _id: 7,
+  nome: 'José',
+  idade: 36,
+  cargo: 'Lider',
+  cidade: 'João Pessoa'
+}
+{
+  _id: 8,
+  nome: 'Alice',
+  idade: 21,
+  cargo: 'Analista',
+  cidade: 'Campina Grande'
+}
+{
+  _id: 9,
+  nome: 'Fabio Jr.',
+  idade: 27,
+  cargo: 'Empilhador',
+  endereco: 'Rua 11 de Outubro',
+  cidade: 'Campina Grande'
+}
+{
+  _id: 10,
+  nome: 'Josias Neto',
+  idade: 37,
+  cargo: 'Faxineiro',
+  endereco: 'Rua Treze',
+  cidade: 'Campina Grande'
+}
+
+db.Pessoa.aggregate([
+	{
+		$group: {
+			_id: "$cidade",
+			mediaIdade: {$avg: "$idade"}
+	}
+    }
+])
+{
+  _id: 'Campina Grande',
+  mediaIdade: 31.2
+}
+{
+  _id: 'João Pessoa',
+  mediaIdade: 40
+}
+{
+  _id: 'Patos',
+  mediaIdade: 24.5
+}
+db.Setores.insertMany([
+	{
+		sigla:"TI",
+		descricao: "Tecnologia da Informação",
+		salario: 6000
+	},
+	{
+		sigla: "SAU",
+		descricao: "Saude",
+		salario: 5000
+	},
+	{
+		sigla: "ENG",
+		descricao: "Engenharia",
+		salario: 7000
+	},
+	{ 
+		sigla: "MEC",
+		descricao: "Mecanica",
+		salario: 3500
+	}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("651369d5353c52bbd4760584"),
+    '1': ObjectId("651369d5353c52bbd4760585"),
+    '2': ObjectId("651369d5353c52bbd4760586"),
+    '3': ObjectId("651369d5353c52bbd4760587")
+  }
+}
+db.Setores.find().sort({salario: -1}).limit(1)
