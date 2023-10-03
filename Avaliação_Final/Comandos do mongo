@@ -1,0 +1,120 @@
+test> use Gestao_de_Financas_Pessoais
+switched to db Gestao_de_Financas_Pessoais
+Gestao_de_Financas_Pessoais> db["Contas Bancárias"].insertMany([
+...   { "agencia": "1234", "tipo_de_conta": "corrente", "saldo": 1000 },
+...   { "agencia": "5678", "tipo_de_conta": "corrente", "saldo": 2000 },
+...   { "agencia": "9876", "tipo_de_conta": "poupança", "saldo": 500 },
+...   { "agencia": "4321", "tipo_de_conta": "corrente", "saldo": 3000 }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("651c94c5426eae88f3126812"),
+    '1': ObjectId("651c94c5426eae88f3126813"),
+    '2': ObjectId("651c94c5426eae88f3126814"),
+    '3': ObjectId("651c94c5426eae88f3126815")
+  }
+}
+Gestao_de_Financas_Pessoais> db["Contas Bancárias"].updateOne({ "agencia": "1234" }, { $set: { "saldo": 1500 } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Gestao_de_Financas_Pessoais> db["Contas Bancárias"].find({ "tipo_de_conta": "corrente" })
+[
+  {
+    _id: ObjectId("651c94c5426eae88f3126812"),
+    agencia: '1234',
+    tipo_de_conta: 'corrente',
+    saldo: 1500
+  },
+  {
+    _id: ObjectId("651c94c5426eae88f3126813"),
+    agencia: '5678',
+    tipo_de_conta: 'corrente',
+    saldo: 2000
+  },
+  {
+    _id: ObjectId("651c94c5426eae88f3126815"),
+    agencia: '4321',
+    tipo_de_conta: 'corrente',
+    saldo: 3000
+  }
+]
+Gestao_de_Financas_Pessoais> db["Contas Bancárias"].find({ "tipo_de_conta": "corrente" })
+[
+  {
+    _id: ObjectId("651c94c5426eae88f3126812"),
+    agencia: '1234',
+    tipo_de_conta: 'corrente',
+    saldo: 1500
+  },
+  {
+    _id: ObjectId("651c94c5426eae88f3126813"),
+    agencia: '5678',
+    tipo_de_conta: 'corrente',
+    saldo: 2000
+  },
+  {
+    _id: ObjectId("651c94c5426eae88f3126815"),
+    agencia: '4321',
+    tipo_de_conta: 'corrente',
+    saldo: 3000
+  }
+]
+Gestao_de_Financas_Pessoais> db["Contas Bancárias"].aggregate([
+...   { $group: { _id: null, media_saldo: { $avg: "$saldo" } } }
+... ])
+[ { _id: null, media_saldo: 1750 } ]
+Gestao_de_Financas_Pessoais> db["Transações"].insertMany([
+...   { "categoria": "alimentação", "data": "2023-10-01", "valor": 50 },
+...   { "categoria": "transporte", "data": "2023-10-02", "valor": 30 },
+...   { "categoria": "compras", "data": "2023-10-03", "valor": 100 },
+...   { "categoria": "alimentação", "data": "2023-10-03", "valor": 60 }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("651c950e426eae88f3126816"),
+    '1': ObjectId("651c950e426eae88f3126817"),
+    '2': ObjectId("651c950e426eae88f3126818"),
+    '3': ObjectId("651c950e426eae88f3126819")
+  }
+}
+Gestao_de_Financas_Pessoais> db["Transações"].updateOne({ "data": "2023-10-01" }, { $set: { "categoria": "restaurantes" } })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Gestao_de_Financas_Pessoais> db["Transações"].find({ "data": "2023-10-03" })
+[
+  {
+    _id: ObjectId("651c950e426eae88f3126818"),
+    categoria: 'compras',
+    data: '2023-10-03',
+    valor: 100
+  },
+  {
+    _id: ObjectId("651c950e426eae88f3126819"),
+    categoria: 'alimentação',
+    data: '2023-10-03',
+    valor: 60
+  }
+]
+Gestao_de_Financas_Pessoais> db["Transações"].aggregate([
+...   { $group: { _id: "$categoria", total_gastos: { $sum: "$valor" } } }
+... ])
+[
+  { _id: 'transporte', total_gastos: 30 },
+  { _id: 'compras', total_gastos: 100 },
+  { _id: 'alimentação', total_gastos: 60 },
+  { _id: 'restaurantes', total_gastos: 50 }
+]
+Gestao_de_Financas_Pessoais> 
+
